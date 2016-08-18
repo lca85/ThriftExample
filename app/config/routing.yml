@@ -1,0 +1,3 @@
+thrift_sample:
+    resource: "@ThriftSampleBundle/Resources/config/routing.yml"
+    prefix:   /

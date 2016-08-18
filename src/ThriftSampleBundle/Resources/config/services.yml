@@ -1,0 +1,6 @@
+services:
+    thrift_sample.openFile:
+        class: ThriftSampleBundle\Services\OpenFileClientService
+        calls:
+            - [setRequest, ["@request_stack"]]
+#        arguments: ["@service_id", "plain_value", %parameter%]

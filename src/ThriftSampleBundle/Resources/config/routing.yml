@@ -1,0 +1,10 @@
+thrift_sample_homepage:
+    path:     /
+    defaults: { _controller: ThriftSampleBundle:Default:index }
+thrift_sample_dir_post:
+    path:     /load-content
+    defaults: { _controller: ThriftSampleBundle:Default:loadDir }
+thrift_sample_dir_open_file:
+    path:     /open-flie
+    defaults: { _controller: ThriftSampleBundle:Default:openFile }
+    

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container" style="margin-top: 50px;">
+        <div class="col-lg-12">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id="input-send" class="btn btn-default" type="button">Load</button>
+              </span>
+                <input type="text"  value="C:/" id="input-value" class="form-control" placeholder="Initial dir path...">
+            </div><!-- /input-group -->
+          </div>
+        <div id="folder-content" class="col-lg-12"style="margin-top: 10px;">
+            
+        </div>
+    </div>
+{% endblock body %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function(){
+            $("#input-send").click(function(){
+                txt = $("#input-value").val();
+                {#//$("#folder-content").load("{{path('thrift_sample_dir_post')}}", {dir: txt});#}
+                $('#folder-content').fileTree({
+                    root: txt,
+                    script: '{{path('thrift_sample_dir_post')}}',
+                    expandSpeed: 1000,
+                    collapseSpeed: 1000,
+                    multiFolder: false,
+                    folderEvent: 'dblclick',
+                }, function(file) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{path('thrift_sample_dir_open_file')}}",
+                        data: {filename:file}
+                      });
+                });
+            });
+        });
+    </script>
+{% endblock javascripts %}
